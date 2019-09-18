@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Create three equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 25%;
+            padding: 10px;
+
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<div class="row">
+    <div class="column" >
+        <h2>Amount</h2>
+        <input type="number" id="inp">
+        <h1></h1>
+        <output type="number" style="align-content: center" id="out"></output>
+    </div>
+    <div class="column">
+        <h2>From Currency</h2>
+        <select id="fc">
+            <option value="1">USD</option>
+            <option value="2">VND</option>
+        </select>
+    </div>
+    <div class="column" >
+        <h2>To Currency</h2>
+        <select id="tc">
+            <option value="2">VND</option>
+            <option value="1">USD</option>
+        </select>
+    </div>
+    <div class="column">
+        <h2>&nbsp;</h2>
+        <button type="button"  onclick="convert()">Convert</button>
+    </div>
+</div>
+<script>
+    function convert() {
+        let m = document.getElementById("inp").value;
+        if (m < 0) {
+            alert("Do not input negative number!!!");
+            document.getElementById("out").value = "";
+
+        } else {
+            let fc = document.getElementById("fc").value;
+            let tc = document.getElementById("tc").value;
+            if (fc == 1 && tc == 2) {
+
+                document.getElementById("out").value = "Converted to: " + (m * 22300) + " VND";
+
+            } else {
+                if (fc == 2 && tc == 1) {
+                    document.getElementById("out").value = "Converted to: " + (m / 22300) + " USD";
+                } else {
+                    document.getElementById("out").value = "";
+                    alert("Please select 2 diffent currency!!!!");
+
+                }
+            }
+
+
+        }
+    }
+</script>
+
+</body>
+</html>
